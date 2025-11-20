@@ -1,4 +1,4 @@
-# Inventory Management System (v3.7.0)
+# Inventory Management System (v3.7.0) Nov-2023
 
 This project features a modern, GUI-based Inventory Management System developed for a Turkish school. It offers comprehensive stock control, transaction tracking, and reporting functionalities through an intuitive graphical interface.
 
