@@ -1,21 +1,64 @@
-# stock_management_system
-This project includes a basic stock management system that is going to be further developed and enhanced by the time.
+# Inventory Management System (v3.7.0)
 
+This project features a modern, GUI-based Inventory Management System developed for a Turkish school. It offers comprehensive stock control, transaction tracking, and reporting functionalities through an intuitive graphical interface.
 
-FIRST VERSION
+## Features
 
-Firstly, the code creates a text file for storing stock data.
+*   **Graphical User Interface (GUI):** Built with `tkinter` and `CustomTkinter` for a user-friendly and visually appealing experience.
+*   **Excel-based Data Storage:** All inventory data is securely stored and managed in a single Excel file (`database.xlsx`) across three distinct sheets:
+    *   **İşlemler (Transactions):** Records all product movements (additions, sales, edits).
+    *   **Stok (Stock):** Maintains the current stock levels for all products.
+    *   **Geçmiş (History):** Logs all modifications and deletions of transactions.
+*   **Comprehensive Product Operations:**
+    *   **Ürün Girişi (Product Entry):** Add new products to the inventory or increase the quantity of existing items.
+    *   **Ürün Çıkışı (Product Sale/Output):** Process product sales, with real-time checks for available stock to prevent overselling.
+    *   **İşlemi Düzenle (Edit Operation):** Modify details of past transactions. This intelligently updates stock levels and records the modification in the transaction history.
+    *   **İşlemi Sil (Delete Operation):** Remove a transaction, which automatically reverses its impact on the stock and logs the deletion for auditing purposes.
+*   **Dynamic Data View:** View and navigate through "İşlemler", "Stok", and "Geçmiş" data directly within the application's interactive tables.
+*   **Automated Reporting:** Generate detailed Excel reports containing all transaction, stock, and history data at any time. Reports are timestamped for easy organization.
+*   **Smart Archiving:** The system automatically archives transaction data into a new report file and clears the "İşlemler" sheet if it exceeds 500 entries, ensuring optimal performance and data manageability while preserving historical records.
+*   **Unique Identifiers:** Automatic generation of unique product codes (e.g., "AA01") and sequential operation numbers for efficient tracking.
+*   **Robust Error Handling:** Provides clear pop-up error messages for invalid inputs, insufficient stock, or other operational issues.
 
-Then, it provides six options:
+## Technologies Used
 
-1- Add Product: You can add products to your stock system using this option. If you add data for an already existing product, the system detects it and increments the quantity for that product.
+*   Python
+*   Tkinter (for GUI)
+*   CustomTkinter (for modern GUI widgets)
+*   Openpyxl (for Excel file handling)
+*   Pillow (PIL - for image handling, specifically the logo)
 
-2- Update Product: You can update the quantity of your products using this option. If the product doesn't exist, the system adds it as a new product to the data file.
+## How to Run
 
-3- View Stock: This option allows you to display your stock data in a tabular format on the terminal. It utilizes the PrettyTable library for this purpose.
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/faisaldurbaa/inventory-management.git
+    cd inventory-management
+    ```
+2.  **Install dependencies:**
+    ```bash
+    pip install openpyxl customtkinter pillow
+    ```
+3.  **Run the application:**
+    ```bash
+    python app.py
+    ```
 
-4- Sell Product: You can sell products by choosing this option. You need to provide the product name and the quantity you want to sell. The system checks if the available stock is sufficient and completes the sale. If the quantity exceeds the available stock, a warning message is displayed.
+## How to Create a Standalone Executable (.exe)
 
-5- Delete Product: You can use this option to delete a specific product from your stock records.
+You can convert the `app.py` script into a single executable file for Windows using `PyInstaller`. This will allow the application to run without needing a Python environment installed on the user's machine, and without a console window opening.
 
-6- Exit: Choosing this option allows you to exit the system.
+1. **Install PyInstaller:**
+
+    ```bash
+    pip install pyinstaller
+    ```
+
+2. **Create the executable:**
+    Navigate to the project root directory in your terminal and run the following command. The `--noconsole` flag ensures no terminal window appears, and `--onefile` packages everything into a single executable.
+
+    ```bash
+    pyinstaller --noconsole --onefile --add-data "VDFL_logo.png;." app.py
+    ```
+
+    This will generate the executable in the `dist` folder.
